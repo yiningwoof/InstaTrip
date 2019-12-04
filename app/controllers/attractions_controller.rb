@@ -1,6 +1,10 @@
 class AttractionsController < ApplicationController
     def index
         @attractions = Attraction.all
+        @reviews = Review.all 
+
+
+     
     end
     
     def show
@@ -23,5 +27,8 @@ class AttractionsController < ApplicationController
     end
 
     private
-    
+
+    def attraction_params
+        params.require(:attraction).permit(:name, :location, :hrs, :header_image)
+    end
 end

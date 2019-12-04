@@ -1,0 +1,23 @@
+google:
+  service: GCS
+  project: insta_trip
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
+  bucket: insta_trip_bucket
+google_dev:
+  service: GCS
+  project: insta_trip
+  credentials: <%= Rails.root.join("config/secrets/insta_trip.json") %>
+  bucket: insta_trip_bucket
+
+
+
+
+# test: 
+#     service: Disk
+#     root: <%= Rails.root.join("tmp/storage") %>
+
+
+# local:
+#     service: Disk
+#     root: <%= Rails.root.join("storage") %>
+#     # host: "http://localhost:3000"

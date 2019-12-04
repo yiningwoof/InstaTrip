@@ -1,0 +1,11 @@
+<h1>Create Review</h1>
+
+<%=form_for @review do |f|%>
+    Rating(0-5):<%=f.text_field :rating%>
+    Review:<%=f.text_field :comment%>
+    <h1>ADD COLLECTION ID</h1>
+    <%= f.label :uploads%>
+    <%= f.file_field :uploads, multiple: true, class: "form-control" %>
+    <%= f.submit%>
+    <%end%>
+

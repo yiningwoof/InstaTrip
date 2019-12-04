@@ -2,7 +2,10 @@
 
 <ol>
 <% @attractions.each do |att| %>
-<li><%= link_to att.name, attraction_path(att) %></li>
+<li><%= link_to att.name, attraction_path(att) %></br></br>
+About:<%=att.description%></br></br>
+Average Rating: 
+</li>
 
 <%end%>
 </ol>

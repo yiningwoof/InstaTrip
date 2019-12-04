@@ -12,11 +12,13 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new
+        @user = User.new(user_params)
         if @user.valid?
             @user.save
-            link_to user_path(@user)
-        else render :new
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+        else
+            render :new
         end
     end
 
@@ -30,4 +32,7 @@ class UsersController < ApplicationController
     end
 
     private
+    def user_params
+        params.require(:user).permit(:first_name, :last_name, :username, :password_digest)
+    end
 end
