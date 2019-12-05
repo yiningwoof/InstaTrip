@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def index
-        @users = Users.all
+        @users = User.all
     end
     
     def show
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to attractions_path
         else
             render :new
         end
@@ -33,6 +33,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :username, :password_digest)
+        params.require(:user).permit(:first_name, :last_name, :username, :password)
     end
 end

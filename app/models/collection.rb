@@ -1,5 +1,5 @@
 class Collection < ApplicationRecord
   has_many :reviews
-  belongs_to :User
-  belongs_to :Attraction
+  belongs_to :user
+  belongs_to :attraction
 end

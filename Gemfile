@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.12'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -55,5 +55,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "google-cloud-storage", "~> 1.8", require: false
-
-gem 'bcrypt'

@@ -1,14 +1,14 @@
 class AttractionsController < ApplicationController
     def index
         @attractions = Attraction.all
-        @reviews = Review.all 
-
-
-     
     end
-    
+
     def show
+        # byebug
         @attraction = Attraction.find(params[:id])
+        @collection = @attraction.collections.build
+        @collection.user = current_user
+        # byebug
     end
 
     def new
@@ -31,4 +31,10 @@ class AttractionsController < ApplicationController
     def attraction_params
         params.require(:attraction).permit(:name, :location, :hrs, :header_image)
     end
+
+    def update_visited
+        puts @collection
+        @collection.visited = true
+    end
+
 end

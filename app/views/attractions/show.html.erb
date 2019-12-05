@@ -1,10 +1,17 @@
 <h1><%=@attraction.name%></h1>
-<h3>About:<%=@attraction.description%></h3>
-<h2>Location:<%=@attraction.location%></h2>
-<h2>Hours:<%=@attraction.hrs%></h2>
-<h2>Cost:<%=@attraction.price%></h2>
-<h2>Hours:<%=@attraction.hrs%></h2>
-<h2>Website:<%=@attraction.website%></h2>
-<h2>Category:<%=@attraction.category%></h2>
+<h3>About: <%=@attraction.description%></h3>
+<h2>Location: <%=@attraction.location%></h2>
+<h2>Hours: <%=@attraction.hrs%></h2>
+<h2>Cost: <%=@attraction.price%></h2>
+<h2>Hours: <%=@attraction.hrs%></h2>
+<h2>Website: <a href=<%=@attraction.website%>><%=@attraction.website%></a></h2>
+<h2>Category: <%=@attraction.category%></h2>
 
 
+<%= form_for(@collection) do |f| %>
+    <%= f.hidden_field :attraction_id, :value => params[:id]%> 
+    <%= f.button "Add to Visited", name: "visited", value: "true" %>
+    <%= f.submit "Add to To Do", class: 'buttons', :onclick => "() => {
+        @collection.save
+    }" %>
+<% end %>

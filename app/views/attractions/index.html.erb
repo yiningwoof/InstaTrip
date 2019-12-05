@@ -4,8 +4,11 @@
 <% @attractions.each do |att| %>
 <li><%= link_to att.name, attraction_path(att) %></br></br>
 About:<%=att.description%></br></br>
-Average Rating: 
+Average Rating: <%= att.avg_rating %>
 </li>
 
 <%end%>
 </ol>
+
+
+<%= link_to "logout", 'logout', :method => :delete%>

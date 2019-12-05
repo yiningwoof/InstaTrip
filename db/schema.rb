@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_230605) do
+ActiveRecord::Schema.define(version: 2019_12_03_172620) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(version: 2019_12_03_230605) do
 
   create_table "collections", force: :cascade do |t|
     t.boolean "visited", default: false
-    t.integer "User_id"
-    t.integer "Attraction_id"
+    t.integer "user_id"
+    t.integer "attraction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Attraction_id"], name: "index_collections_on_Attraction_id"
-    t.index ["User_id"], name: "index_collections_on_User_id"
+    t.index ["attraction_id"], name: "index_collections_on_attraction_id"
+    t.index ["user_id"], name: "index_collections_on_user_id"
   end
 
   create_table "followings", force: :cascade do |t|
@@ -66,10 +66,10 @@ ActiveRecord::Schema.define(version: 2019_12_03_230605) do
   create_table "reviews", force: :cascade do |t|
     t.float "rating"
     t.string "comment"
-    t.integer "Collection_id"
+    t.integer "collection_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Collection_id"], name: "index_reviews_on_Collection_id"
+    t.index ["collection_id"], name: "index_reviews_on_collection_id"
   end
 
   create_table "users", force: :cascade do |t|
