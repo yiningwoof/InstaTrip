@@ -1,11 +1,29 @@
-<h1>Create Review</h1>
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
 
-<%=form_for @review do |f|%>
-    Rating(0-5):<%=f.text_field :rating%>
-    Review:<%=f.text_field :comment%>
-    <h1>ADD COLLECTION ID</h1>
-    <%= f.label :uploads%>
-    <%= f.file_field :uploads, multiple: true, class: "form-control" %>
-    <%= f.submit%>
-    <%end%>
+    <body>
+        <%= form_with model: @review do |f| %>
+            <%= f.hidden_field :collection_id, :value => params[:collection_id]%> 
 
+            <div class='field'>
+            <%= f.label :rating, "Rating", class: "col-md-1 control-label" %>
+            <%= f.text_field :rating %>
+            </div>
+
+            <div class='field'>
+            <%= f.label :comment, "Comments", class: "col-md-1 control-label" %>
+            <%= f.text_field :comment %>
+            </div>
+
+            <div class="upload-btn-wrapper">
+            <button class="btn">Upload Pictures</button>
+            <%= f.file_field :uploads, multiple: true, class: "form-control" %>
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Submit">
+        <% end %>
+    </body>
+</html>

@@ -5,18 +5,16 @@ class ReviewsController < ApplicationController
     
     def show
         @review = Review.find(params[:id])
-
     end
 
     def new
+        # byebug
         @review = Review.new
     end
 
     def create
         @review = Review.create(review_params)
-       
-            redirect_to review_path(@review)
-       
+        redirect_to review_path(@review)
     end
 
     def edit
@@ -31,6 +29,6 @@ class ReviewsController < ApplicationController
     private
 
     def review_params
-        params.require(:review).permit(:rating, :comment, :Collection_id, uploads: [])
+        params.require(:review).permit(:rating, :comment, :collection_id, uploads: [])
     end
 end

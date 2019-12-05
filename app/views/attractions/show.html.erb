@@ -7,11 +7,14 @@
 <h2>Website: <a href=<%=@attraction.website%>><%=@attraction.website%></a></h2>
 <h2>Category: <%=@attraction.category%></h2>
 
-
-<%= form_for(@collection) do |f| %>
+<%= form_with model: @collection do |f| %>
     <%= f.hidden_field :attraction_id, :value => params[:id]%> 
-    <%= f.button "Add to Visited", name: "visited", value: "true" %>
-    <%= f.submit "Add to To Do", class: 'buttons', :onclick => "() => {
-        @collection.save
-    }" %>
+    <%= f.hidden_field :visited, :value => true%>
+    <%= f.submit "Add to Visited" %>
+<% end %>
+
+<%= form_with model: @collection do |f| %>
+    <%= f.hidden_field :attraction_id, :value => params[:id]%> 
+    <%= f.hidden_field :visited, :value => false%>
+    <%= f.submit "Add to To Do" %>
 <% end %>

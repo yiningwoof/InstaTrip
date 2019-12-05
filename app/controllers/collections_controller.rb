@@ -10,27 +10,29 @@ class CollectionsController < ApplicationController
     end
 
     def create
-        Collection.create(user_id: current_user.id, attraction_id: params[:attraction_id], visited: params[:visited])
+        @collection = Collection.create(user_id: current_user.id, attraction_id: params[:collection][:attraction_id], visited: params[:collection][:visited])
+        if @collection.visited == true
+            redirect_to new_review_path(collection_id: @collection.id)
+        else
+            redirect_to user_todo_path(current_user)
+        end
     end
 
-    def create_visited
-        byebug
-        @collection = Collection.create(user_id: current_user.id, attraction_id: session[:attraction_id], visited: true)
-    end
-
-    def create_unvisited
-        @collection = Collection.create(user_id: current_user.id, attraction_id: session[:attraction_id], visited: false)
-    end
-
-    def edit
+    def edit 
+        @collection = Collection.find(params[:id])
     end
 
     def update
+        @collection = Collection.update(user_id: current_user.id, attraction_id: params[:collection][:attraction_id], visited: params[:collection][:visited])
     end
 
     def destroy
     end
 
     private
+
+    def collection_params
+        params.require(:collection).permit(:user_id, :attraction_id, :visited)
+    end
     
 end

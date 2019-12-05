@@ -18,4 +18,9 @@ class Attraction < ApplicationRecord
         end
     end
 
+        
+    def self.check_attachment
+        Attraction.all.find{|a| a.header_image == nil }
+    end
+
 end

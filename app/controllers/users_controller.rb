@@ -31,6 +31,10 @@ class UsersController < ApplicationController
     def destroy
     end
 
+    def todo
+        @collection_todo = Collection.all.select{ |collection| collection.visited == false && collection.user_id == current_user.id }.uniq
+    end
+
     private
     def user_params
         params.require(:user).permit(:first_name, :last_name, :username, :password)

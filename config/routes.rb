@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :reviews
   resources :collections
   resources :attractions
-  resources :users
+  resources :users do
+    get 'todo', to: 'users#todo'
+  end
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
