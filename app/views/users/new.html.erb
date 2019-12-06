@@ -1,12 +1,33 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f|%>
-    <%= f.label :first_name%><br>
-    <%= f.text_field :first_name%><br>
-    <%= f.label :last_name%><br>
-    <%= f.text_field :last_name%><br>
-    <%= f.label :username%><br>
-    <%= f.text_field :username%><br>
-    <%= f.label :password%><br>
-    <%= f.password_field :password%><br>
-    <%= f.submit %>
-<%end%>
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Signin Template · Bootstrap</title>
+    <link href="signin.css" rel="stylesheet">
+    </head>
+
+    <body class="text-center">
+        <div class="bg">
+            <div class="jumbotron vertical-center">
+                <div class="container">
+                    <div class="mainContent">
+                        <div class="grid">
+                            <h1>Sign Up</h1><br>
+                            <%= form_for @user do |f|%>
+                                <%= f.label :first_name%>
+                                <%= f.text_field :first_name%><br><br>
+                                <%= f.label :last_name%>
+                                <%= f.text_field :last_name%><br><br>
+                                <%= f.label :username%>
+                                <%= f.text_field :username%><br><br>
+                                <%= f.label :password%>
+                                <%= f.password_field :password%><br><br>
+                                <button type="submit" class="btn btn-sm btn-outline-primary">Sign up</button>
+                            <%end%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div>
+    </body>
+</html>

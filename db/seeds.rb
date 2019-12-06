@@ -1,4 +1,4 @@
-capitol = Attraction.new(
+capitol = Attraction.create(
     category: "Cultural",
     description: "The Texas State Capitol is the capitol building and seat of government of the American state of Texas. Located in downtown Austin, Texas, the structure houses the offices and chambers of the Texas Legislature and of the Governor of Texas. Designed in 1881 by architect Elijah E. Myers, it was constructed from 1882 to 1888 under the direction of civil engineer Reuben Lindsay Walker.",
     hrs: "8:30 am to 4:40 pm",
@@ -16,7 +16,7 @@ spoke = Attraction.create(
     hrs: "5:00 pm to 12:00 am",
     price: "Varies",
     website: "https://www.brokenspokeaustintx.net/",
-    category: "Food & Drink",
+    category: "Food & Drinks",
     description: "Internationally known dance hall.",
     picture: "",
 )
@@ -89,7 +89,7 @@ franklin = Attraction.create(
     hrs: "11:00 am to 3:00 pm",
     price: "Varies",
     website: "https://franklinbbq.com/",
-    category: "Food & Drink",
+    category: "Food & Drinks",
     description: "The best barbecue joint in Texas.",
     picture:""
 )

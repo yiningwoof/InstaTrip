@@ -28,48 +28,38 @@
         <main role='main'>
             <section class="jumbotron text-center">
                 <div class="container">
-                    <h1>Attractions<h1>
+                    <h1>My Visited Places<h1>
                     <p class="lead text-muted">
-                        "All attractions in Austin, TX!"
-                    </p>
-                    <p>
-                        <a href="<%= attractions_path %>" class="btn btn-primary my-2">All Attractions</a>
-                        <a href="<%= attractions_cultural_path %>" class="btn btn-secondary my-2">Cultural Sites</a>
-                        <a href="<%= attractions_natural_path %>" class="btn btn-secondary my-2">Natural Wonders</a>
-                        <a href="<%= attractions_food_drink_path %>" class="btn btn-secondary my-2">Food and Drinks</a>
+                        "THE WORLD IS A BOOK AND THOSE WHO DO NOT TRAVEL READ ONLY A PAGE.” ~ SAINT AUGUSTINE"
                     </p>
                 </div>
             </section>
             <div class="album py-5 bg-light">
                 <div class="container">
                     <div class="row">
-                        <% @attractions.each{ |a| %>
+                        <% @collection_visited.each{ |c| %>
                             <div class="col-md-4">
                                 <div class="card mb-4 shadow-sm">
-                                    <%= image_tag a.header_image, :size => "360x240" %>
+                                    <% first_review = c.reviews.first %>
+                                    <% if first_review && first_review.uploads[0] %>
+                                        <%= image_tag url_for(first_review.uploads[0]), :size => "360x240" %>
+                                    <% else %>
+                                        <%= image_tag c.attraction.header_image, :size => "360x240" %>
+                                    <% end %>
                                     <div class="card-body">
                                         <p class="card-text">
-                                            <%= a.name %>
+                                            <%= c.attraction.name %>
                                         </p>
-                                        <p>
-                                            Average Rating: <%= a.avg_rating %>
-                                        </p>
+                                        <% c.reviews.each { |r| %>
+                                            <ul>
+                                                <li>
+                                                    <%= r.comment %>
+                                                </li>
+                                            </ul>
+                                        <% } %>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <div class="btn btn-sm btn-outline-secondary">
-                                                    <%= link_to 'View', attraction_path(a), :class => "btn" %>
-                                                </div>
-                                                <% collection = Collection.new %>
-                                                <%= bootstrap_form_with model: collection do |f| %>
-                                                    <%= f.hidden_field :attraction_id, :value => a.id %> 
-                                                    <%= f.hidden_field :visited, :value => true %>
-                                                    <button type="submit" class="btn btn-default">+ Visited</button>
-                                                <% end %>
-                                                <%= bootstrap_form_with model: collection do |f| %>
-                                                    <%= f.hidden_field :attraction_id, :value => a.id %> 
-                                                    <%= f.hidden_field :visited, :value => false %>
-                                                    <button type="submit" class="btn btn-default">+ To Do</button>
-                                                <% end %>
+                                                <%= link_to "Add a new review", new_review_path(collection_id: c.id), class: 'btn btn-secondary my-2' %>
                                             </div>
                                         </div>
                                     </div>

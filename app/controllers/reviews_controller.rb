@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     end
 
     def create
+        # byebug
         @review = Review.create(review_params)
         redirect_to review_path(@review)
     end

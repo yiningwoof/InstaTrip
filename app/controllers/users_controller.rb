@@ -35,6 +35,10 @@ class UsersController < ApplicationController
         @collection_todo = Collection.all.select{ |collection| collection.visited == false && collection.user_id == current_user.id }.uniq
     end
 
+    def visited
+        @collection_visited = Collection.all.select{ |collection| collection.visited == true && collection.user_id == current_user.id }.uniq
+    end
+
     private
     def user_params
         params.require(:user).permit(:first_name, :last_name, :username, :password)

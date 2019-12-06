@@ -11,10 +11,14 @@ class CollectionsController < ApplicationController
 
     def create
         @collection = Collection.create(user_id: current_user.id, attraction_id: params[:collection][:attraction_id], visited: params[:collection][:visited])
-        if @collection.visited == true
-            redirect_to new_review_path(collection_id: @collection.id)
+        if @collection.valid?
+            if @collection.visited == true
+                redirect_to new_review_path(collection_id: @collection.id)
+            else
+                redirect_to user_todo_path(current_user)
+            end
         else
-            redirect_to user_todo_path(current_user)
+            render :error
         end
     end
 
@@ -24,9 +28,13 @@ class CollectionsController < ApplicationController
 
     def update
         @collection = Collection.update(user_id: current_user.id, attraction_id: params[:collection][:attraction_id], visited: params[:collection][:visited])
+        redirect_to new_review_path
     end
 
     def destroy
+    end
+
+    def error
     end
 
     private

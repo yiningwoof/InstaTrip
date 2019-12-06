@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     # byebug
     if @user && @user.authenticate(params[:password])
        session[:user_id] = @user.id
-       redirect_to '/welcome'
+       redirect_to attractions_path
     else
        redirect_to '/login'
     end

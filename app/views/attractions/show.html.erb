@@ -1,3 +1,99 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="<%= attractions_path %>">All Attractions</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= user_visited_path(current_user) %>">Places Ive Been </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= user_todo_path(current_user)%>">My To Do </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="btn btn-sm btn-outline-primary" href="<%= logout_path %>" data-method="delete">Log out</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </head>
+    <body>
+            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h1 class="display-4"><h1><%=@attraction.name%></h1></h1>
+                <p class="lead"><%=@attraction.description%></p>
+                <p class="lead"><a href=<%=@attraction.website%>><%=@attraction.website%></a></p>
+                <p class="lead">Location:  <%=@attraction.location%></p>
+                <p class="lead">Hours:   <%=@attraction.hrs%></p>
+                <p class="lead">Cost:   <%=@attraction.price%></p>
+            </div>
+            <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">I've been here!</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+            <li>Tell us what you think</li>
+            <li>Add a review</li>
+            <li>Add a rating</li>
+            <li>Upload photos</li>
+            </ul>
+            <%= form_with model: @collection do |f| %>
+                <%= f.hidden_field :attraction_id, :value => params[:id]%> 
+                <%= f.hidden_field :visited, :value => true%>
+            <%= f.submit 'Click to Review', :class => "btn btn-lg btn-block btn-outline-primary" %>
+            <%end%>
+        </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Latest Reviews</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+            <% @reviews.each do |r| %>
+                <li>
+                <%=r%>
+                </li>
+                <%end%>
+            </ul>
+        </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">I want to go here!</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-unstyled mt-3 mb-4">
+            <li>If you havent been yet</li>
+            <li>add this attraction</li>
+            <li>to your To Do list </li>
+            <li>to save for later</li>
+            </ul>
+            <%= form_with model: @collection do |f| %>
+                <%= f.hidden_field :attraction_id, :value => params[:id]%> 
+                <%= f.hidden_field :visited, :value => false%>
+            <%= f.submit 'Add to To Do', :class => "btn btn-lg btn-block btn-outline-primary" %>
+            <%end%>
+        </div>
+        </div>
+    </div>
+    <body>
+</html>
+
+
+
+
+
+
+
 <h1><%=@attraction.name%></h1>
 <h3>About: <%=@attraction.description%></h3>
 <h2>Location: <%=@attraction.location%></h2>
@@ -8,13 +104,13 @@
 <h2>Category: <%=@attraction.category%></h2>
 
 <%= form_with model: @collection do |f| %>
-    <%= f.hidden_field :attraction_id, :value => params[:id]%> 
-    <%= f.hidden_field :visited, :value => true%>
+    <%= f.hidden_field :attraction_id, :value => params[:id] %>
+    <%= f.hidden_field :visited, :value => true %>
     <%= f.submit "Add to Visited" %>
 <% end %>
 
 <%= form_with model: @collection do |f| %>
-    <%= f.hidden_field :attraction_id, :value => params[:id]%> 
-    <%= f.hidden_field :visited, :value => false%>
+    <%= f.hidden_field :attraction_id, :value => params[:id] %> 
+    <%= f.hidden_field :visited, :value => false %>
     <%= f.submit "Add to To Do" %>
 <% end %>

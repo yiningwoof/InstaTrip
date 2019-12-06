@@ -1,8 +1,31 @@
-<h1>Welcome</h1>
-<% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.username %></h1>
-<%end%>
-<%= button_to "Sign Up", '/users/new', method: :get%>
-<%= button_to "Login", '/login', method: :get%>
-
-<%= link_to "logout", 'logout', :method => :delete%>
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Signin Template · Bootstrap</title>
+    <link href="signin.css" rel="stylesheet">
+    </head>
+    <body class="text-center">
+        <div class="bg">
+            <div class="jumbotron vertical-center">
+                <div class="container">
+                    <div id="welcome">
+                        <div class="mainContent">
+                            <div class="grid">
+                                <% if logged_in? %>
+                                    <h1 class="h3 mb-3 font-weight-normal">Welcome, <%= current_user.first_name %>! You are logged in. </h1>
+                                    <%= link_to "Log out", logout_path, method: :delete, class: 'btn btn-secondary my-2' %>
+                                <% else %>
+                                    <h2 class="h3 mb-3 font-weight-normal">Welcome to InstaTrip!</h2>
+                                    <h1 class="h3 mb-3 font-weight-normal">Please sign up or log in.</h1>
+                                    <a href="<%= new_user_path %>" class="btn btn-primary my-2">Sign up</a>
+                                    <a href="<%= login_path %>" class="btn btn-secondary my-2">Log in</a>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div>
+    </body>
+</html>

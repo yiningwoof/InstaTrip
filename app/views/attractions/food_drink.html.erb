@@ -1,0 +1,81 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <main role='main'>
+            <section class="jumbotron text-center">
+                <div class="container">
+                    <h1>Food & Drinks<h1>
+                    <p class="lead text-muted">
+                        "Austinites' favorate food & drinks!"
+                    </p>
+                    <p>
+                        <a href="<%= attractions_path %>" class="btn btn-primary my-2">All Attractions</a>
+                        <a href="<%= attractions_cultural_path %>" class="btn btn-secondary my-2">Cultural Sites</a>
+                        <a href="<%= attractions_natural_path %>" class="btn btn-secondary my-2">Natural Wonders</a>
+                        <a href="<%= attractions_food_drink_path %>" class="btn btn-secondary my-2">Food and Drinks</a>
+                    </p>
+                </div>
+            </section>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <% @attractions.each{ |a| %>
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <%= image_tag a.header_image, :size => "360x240" %>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <%= a.name %>
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                    
+                                        <div class="btn-group">
+                                            <div class="btn btn-sm btn-outline-secondary">
+                                                <%= link_to 'View', attraction_path(a), :class => "btn" %>
+                                            </div>
+                                            <% collection = Collection.new %>
+                                            <%= bootstrap_form_with model: collection do |f| %>
+                                                <%= f.hidden_field :attraction_id, :value => a.id %> 
+                                                <%= f.hidden_field :visited, :value => true %>
+                                                <button type="submit" class="btn btn-default">+ Visited</button>
+                                            <% end %>
+                                            <%= bootstrap_form_with model: collection do |f| %>
+                                                <%= f.hidden_field :attraction_id, :value => a.id %> 
+                                                <%= f.hidden_field :visited, :value => false %>
+                                                <button type="submit" class="btn btn-default">+ To Do</button>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <div>
+            </div>
+        </div>
+        </main>
+
+        <ul class="list-group">
+            <% @attractions.each{ |a| %>
+                <li class="list-group-item"><%= a.name %></li>
+                <li class="list-group-item"><%= a.description %></li>
+                <li class="list-group-item"><%= a.avg_rating %></li>
+                <%= form_with model: a do |f| %>
+                    <%= f.hidden_field :attraction_id, :value => a.id %> 
+                    <%= f.hidden_field :visited, :value => true %>
+                    <%= f.submit "Add to Visited" %>
+                <% end %>
+                <%= form_with model: a do |f| %>
+                    <%= f.hidden_field :attraction_id, :value => a.id %> 
+                    <%= f.hidden_field :visited, :value => false %>
+                    <%= f.submit "Add to To Do" %>
+                <% end %>
+            <% } %>
+        </ul>
+        <%= link_to "logout", 'logout', :method => :delete%>
+    </body>
+</html>
