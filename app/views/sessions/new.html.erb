@@ -1,8 +1,27 @@
-<h1>Login</h1>
-   <%= form_tag '/login' do %>
-   <%= label_tag :username%>
-   <%= text_field_tag :username %>
-   <%= label_tag :password%>
-   <%= password_field_tag :password%>
-   <%= submit_tag "Login"%>
-<%end%>
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<title>Signin Template · Bootstrap</title>
+</head>
+<body class="text-center">
+    <div class="bg">
+        <div class="jumbotron vertical-center">
+            <div class="container">
+                <div class="mainContent">
+                    <div class="grid">
+                        <h1>Sign In</h1><br>
+                           <%= form_tag '/login' do %>
+                           <%= label_tag :username%>
+                           <%= text_field_tag :username %><br><br>
+                           <%= label_tag :password%>
+                           <%= password_field_tag :password%><br><br>
+                           <button type="submit" class="btn btn btn-outline-primary">Sign In</button>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div>
+</body>
+</html>

@@ -8,20 +8,14 @@ class AttractionsController < ApplicationController
         @attraction = Attraction.find(params[:id])
         @collection = @attraction.collections.build
         @collection.user = current_user
-        @all_collect = []
-        @reviews = []
+        @all_reviews = []
         @images = []
-        @attraction.collections.each { |a|
-            @all_collect << a.reviews
-        }
-        @all_collect.each { |c|
-            c.each { |x|
-            @reviews << x.comment
-            }
-        }
-        @all_collect.each { |c|
-            c.each { |pics|
-            @images << pics.uploads
+        @attraction.collections.each { |c|
+            c.reviews.each { |r|
+                @all_reviews << r
+                r.uploads.each { |pic|
+                    @images << pic
+                }
             }
         }
     end

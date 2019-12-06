@@ -24,26 +24,38 @@
             </div>
         </nav>
     </head>
-    <body>
-        <%= form_with model: @review do |f| %>
-            <%= f.hidden_field :collection_id, :value => params[:collection_id]%> 
-
-            <div class='field'>
-            <%= f.label :rating, "Rating", class: "col-md-1 control-label" %>
-            <%= f.text_field :rating %>
+    <body class="text-center">
+        <div class="bg">
+            <div class="jumbotron vertical-center">
+                <div class="container">
+                <h2>New review for: </h2>
+                <h2><%= Collection.find(params[:collection_id]).attraction.name %></h2>
+                    <div id="review">
+                        <div class="mainContent">
+                                <%= form_with model: @review do |f| %>
+                                    <%= f.hidden_field :collection_id, :value => params[:collection_id]%> 
+                        
+                                    <div class='field'>
+                                        <%= f.label :rating, "Rating (0-5) ", class: "col-md-4 control-label" %>
+                                        <%= f.text_field :rating %>
+                                    </div>
+                        
+                                    <div class='field'>
+                                        <%= f.label :comment, "Comments", class: "col-md-4 control-label" %>
+                                        <%= f.text_field :comment, :class=>"input-xlarge" %>
+                                    </div>
+                        
+                                    <div class="upload-btn-wrapper">
+                                        <button class="btn">Upload Pictures</button>
+                                        <%= f.file_field :uploads, multiple: true, class: "form-control" %>
+                                    </div><br>
+                        
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                <% end %>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class='field'>
-            <%= f.label :comment, "Comments", class: "col-md-1 control-label" %>
-            <%= f.text_field :comment %>
-            </div>
-
-            <div class="upload-btn-wrapper">
-            <button class="btn">Upload Pictures</button>
-            <%= f.file_field :uploads, multiple: true, class: "form-control" %>
-            </div>
-
-            <input type="submit" class="btn btn-primary" value="Submit">
-        <% end %>
+        <div>
     </body>
 </html>

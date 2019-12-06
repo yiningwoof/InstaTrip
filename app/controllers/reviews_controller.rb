@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     def create
         # byebug
         @review = Review.create(review_params)
-        redirect_to review_path(@review)
+        redirect_to attractions_path
     end
 
     def edit
