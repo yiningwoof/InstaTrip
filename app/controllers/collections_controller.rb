@@ -27,8 +27,9 @@ class CollectionsController < ApplicationController
     end
 
     def update
-        @collection = Collection.update(user_id: current_user.id, attraction_id: params[:collection][:attraction_id], visited: params[:collection][:visited])
-        redirect_to new_review_path
+        Collection.update(user_id: current_user.id, attraction_id: params[:collection][:attraction_id], visited: params[:collection][:visited])
+        # byebug
+        redirect_to new_review_path(collection_id: params[:id])
     end
 
     def destroy
