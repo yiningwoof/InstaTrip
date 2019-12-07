@@ -28,21 +28,19 @@
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <section class="jumbotron text-center">
                 <div class="container">
-                    <h1><%= @attraction.name %><h1>
+                    <h1><%= @attraction.name %></h1>
                     <div class="card-deck mb-3 text-center">
                     </div>
-                        <p>
-                            <%= form_with model: @collection do |f| %>
-                                <%= f.hidden_field :attraction_id, :value => params[:id]%> 
-                                <%= f.hidden_field :visited, :value => false%>
-                                <%= f.submit '+ To Do', :class => "btn btn btn-outline-primary" %>
-                            <% end %>
-                            <%= form_with model: @collection do |f| %>
-                                <%= f.hidden_field :attraction_id, :value => params[:id]%> 
-                                <%= f.hidden_field :visited, :value => true%>
-                                <%= f.submit '+ Visited', :class => "btn btn btn-outline-primary" %>
-                            <% end %>
-                        </p>
+                    <%= form_with class: "header_form", model: @collection do |f| %>
+                        <%= f.hidden_field :attraction_id, :value => params[:id]%> 
+                        <%= f.hidden_field :visited, :value => false%>
+                        <%= f.submit '+ To Do', :class => "btn btn btn-outline-primary" %>
+                    <% end %>
+                    <%= form_with class: "header_form", model: @collection do |f| %>
+                        <%= f.hidden_field :attraction_id, :value => params[:id]%> 
+                        <%= f.hidden_field :visited, :value => true%>
+                        <%= f.submit '+ Visited', :class => "btn btn btn-outline-primary" %>
+                    <% end %><br><br>
                     <p class="lead text-muted">
                         <%= @attraction.description %>
                     </p>
