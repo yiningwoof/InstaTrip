@@ -36,7 +36,11 @@ class UsersController < ApplicationController
     end
 
     def visited
-        @collection_visited = Collection.all.select{ |collection| collection.visited == true && collection.user_id == current_user.id }.uniq
+        # if params[:user_id] = nil
+        #     @collection_visited = []
+        # else
+            @collection_visited = Collection.all.select{ |collection| collection.visited == true && collection.user_id == current_user.id }.uniq
+        # end
     end
 
     private

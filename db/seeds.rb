@@ -8,7 +8,7 @@ capitol = Attraction.create(
     price: "Free",
     website: "https://tspb.texas.gov/prop/tc/tc/capitol.html",
 )
-capitol.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/capitol_header.jpg"), filename: "capitol_header.jpg", content_type: "image/jpg")
+capitol.header_image.attach(io: File.open("./public/capitol_header.jpg"), filename: "capitol_header.jpg", content_type: "image/jpg")
 
 spoke = Attraction.create(
     name: "Broken Spoke",
@@ -21,7 +21,7 @@ spoke = Attraction.create(
     picture: "",
 )
 
-spoke.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/broken_header.jpg"), filename: "broken_header.jpg", content_type: "image/jpg")
+spoke.header_image.attach(io: File.open("./public/broken_header.jpg"), filename: "broken_header.jpg", content_type: "image/jpg")
 
 springs = Attraction.create(
     name: "Barton Springs Pool",
@@ -33,7 +33,7 @@ springs = Attraction.create(
     description:"Recreational outdoor swimming pool that is filled entirely with water from nearby natural springs",
     picture: "",
 )
-springs.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/springs_header.jpg"), filename: "springs_header.jpg", content_type: "image/jpg")
+springs.header_image.attach(io: File.open("./public/springs_header.jpg"), filename: "springs_header.jpg", content_type: "image/jpg")
 
 lake = Attraction.create(
     name:"Lake Travis",
@@ -45,7 +45,7 @@ lake = Attraction.create(
     description: "Lake Travis is a reservoir on the Colorado River in central Texas in the United States.",
     picture:""
 )
-lake.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/lake_header.jpg"), filename: "lake_header.jpg", content_type: "image/jpg")
+lake.header_image.attach(io: File.open("./public/lake_header.jpg"), filename: "lake_header.jpg", content_type: "image/jpg")
 
 bats = Attraction.create(
     name:"Congress Bat Bridge",
@@ -57,7 +57,7 @@ bats = Attraction.create(
     description: "Every summer night, hundreds of people gather to see the world's largest urban bat colony emerge from under the Congress Avenue Bridge in downtown Austin, Texas. These 1.5 million bats are fun to watch, but they're also making our world a better place to live",
     picture:""
 )
-bats.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/bats_header.jpg"), filename: "bats_header.jpg", content_type: "image/jpg")
+bats.header_image.attach(io: File.open("./public/bats_header.jpg"), filename: "bats_header.jpg", content_type: "image/jpg")
 
 mount = Attraction.create(
     name:"Mount Bonnell",
@@ -69,7 +69,7 @@ mount = Attraction.create(
     description: "Mount Bonnell, also known as Covert Park, is a prominent point alongside the Lake Austin portion of the Colorado River in Austin, Texas.",
     picture:""
 )
-mount.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/mount_header.jpg"), filename: "mount_header.jpg", content_type: "image/jpg")
+mount.header_image.attach(io: File.open("./public/mount_header.jpg"), filename: "mount_header.jpg", content_type: "image/jpg")
 
 library = Attraction.create(
     name:"LBJ Presidential Library",
@@ -81,7 +81,7 @@ library = Attraction.create(
     description: "The LBJ Presidential Library, is the presidential library and museum of Lyndon Baines Johnson, the 36th President of the United States (1963–1969). It is located on the grounds of the University of Texas at Austin, and is one of 13 Presidential Libraries administered by the National Archives and Records Administration.",
     picture:""
 )
-library.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/library_header.jpg"), filename: "library_header.jpg", content_type: "image/jpg")
+library.header_image.attach(io: File.open("./public/library_header.jpg"), filename: "library_header.jpg", content_type: "image/jpg")
 
 franklin = Attraction.create(
     name:"Franklin Barbecue",
@@ -93,7 +93,7 @@ franklin = Attraction.create(
     description: "The best barbecue joint in Texas.",
     picture:""
 )
-franklin.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/franklin_header.jpg"), filename: "franklin_header.jpg", content_type: "image/jpg")
+franklin.header_image.attach(io: File.open("./public/franklin_header.jpg"), filename: "franklin_header.jpg", content_type: "image/jpg")
 
 continental = Attraction.create(
     name:"The Continental Club",
@@ -105,7 +105,7 @@ continental = Attraction.create(
     description: "The granddaddy of live music venues, the Continental Club has enjoyed a coast-to-coast and worldwide reputation as the premiere club for live music in Austin.",
     picture:""
 )
-continental.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/continental_header.jpg"), filename: "continental_header.jpg", content_type: "image/jpg")
+continental.header_image.attach(io: File.open("./public/continental_header.jpg"), filename: "continental_header.jpg", content_type: "image/jpg")
 
 ut = Attraction.create(
     name:"UT Tower & Campus",
@@ -117,7 +117,7 @@ ut = Attraction.create(
     description: "The Main Building's 307-foot tower has 27 floors and is one of the most recognizable symbols of the university and the city.",
     picture:""
 )
-ut.header_image.attach(io: File.open("/Users/yiningwang/Documents/Flatiron/Mod2/InstaTrip/public/ut_header.jpg"), filename: "ut_header.jpg", content_type: "image/jpg")
+ut.header_image.attach(io: File.open("./public/ut_header.jpg"), filename: "ut_header.jpg", content_type: "image/jpg")
 
 brittney = User.create(first_name:"Brittney",last_name:"Haselmayer",username: "BRH",password: "123")
 yining = User.create(first_name:"Yining",last_name:"Wang",username: "YW",password: "12")

@@ -78,24 +78,5 @@
             </div>
         </div>
         </main>
-
-        <ul class="list-group">
-            <% @attractions.each{ |a| %>
-                <li class="list-group-item"><%= a.name %></li>
-                <li class="list-group-item"><%= a.description %></li>
-                <li class="list-group-item"><%= a.avg_rating %></li>
-                <%= form_with model: a do |f| %>
-                    <%= f.hidden_field :attraction_id, :value => a.id %> 
-                    <%= f.hidden_field :visited, :value => true %>
-                    <%= f.submit "Add to Visited" %>
-                <% end %>
-                <%= form_with model: a do |f| %>
-                    <%= f.hidden_field :attraction_id, :value => a.id %> 
-                    <%= f.hidden_field :visited, :value => false %>
-                    <%= f.submit "Add to To Do" %>
-                <% end %>
-            <% } %>
-        </ul>
-        <%= link_to "logout", 'logout', :method => :delete%>
     </body>
 </html>
